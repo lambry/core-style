@@ -15,41 +15,38 @@
 	--cs-padding-lg: 5rem;
 }
 
-$extended: ".wp-block-group, .wp-block-cover";
-$shift: ("up": "top", "right": "right", "down": "bottom", "left": "left");
 $sizes: "sm", "md", "lg";
+$shift: ("up": "top", "right": "right", "down": "bottom", "left": "left");
 
-#{$extended} {
-	// Shift block styles
-	@each $option, $position in $shift {
-		&.shift-#{$option} {
-			margin-#{$position}: var(--cs-shift-#{$option});
-			position: relative;
-			z-index: 2;
-		}
+// Shift block styles
+@each $option, $position in $shift {
+	.shift-#{$option} {
+		margin-#{$position}: var(--cs-shift-#{$option});
+		position: relative;
+		z-index: 2;
+	}
+}
+
+@each $size in $sizes {
+	// Padding styles
+	.padding-top-#{$size} {
+		padding-top: var(--cs-padding-#{$size});
 	}
 
-	@each $size in $sizes {
-		// Padding styles
-		&.padding-top-#{$size} {
-			padding-top: var(--cs-padding-#{$size});
-		}
+	.padding-right-#{$size} {
+		padding-right: var(--cs-padding-#{$size});
+	}
 
-		&.padding-right-#{$size} {
-			padding-right: var(--cs-padding-#{$size});
-		}
+	.padding-bottom-#{$size} {
+		padding-bottom: var(--cs-padding-#{$size});
+	}
 
-		&.padding-bottom-#{$size} {
-			padding-bottom: var(--cs-padding-#{$size});
-		}
+	.padding-left-#{$size} {
+		padding-left: var(--cs-padding-#{$size});
+	}
 
-		&.padding-left-#{$size} {
-			padding-left: var(--cs-padding-#{$size});
-		}
-
-		// Max width styles
-		&.max-width-#{$size} {
-			max-width: var(--cs-max-width-#{$size});
-		}
+	// Max width styles
+	.max-width-#{$size} {
+		max-width: var(--cs-max-width-#{$size});
 	}
 }

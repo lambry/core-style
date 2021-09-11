@@ -1,10 +1,20 @@
 import { __ } from "@wordpress/i18n";
+import { defaultHooks } from "@wordpress/hooks";
 import { arrowLeft, arrowRight, arrowUp, arrowDown } from "@wordpress/icons";
 
 /**
  * Supported block types.
  */
-export const extended = ["core/group", "core/cover"];
+export const supportsShift = defaultHooks.applyFilters("coreStyle.supportsShift", [
+	"core/group", "core/columns", "core/media-text", "core/image", "core/video"
+]);
+export const supportsMaxWidth = defaultHooks.applyFilters("coreStyle.supportsMaxWidth", [
+	"core/group", "core/heading", "core/paragraph", "core/quote", "core/list"
+]);
+export const supportsPadding = defaultHooks.applyFilters("coreStyle.supportsPadding", [
+	"core/group", "core/cover", "core/buttons"
+]);
+export const supportedBlocks = [...supportsShift, ...supportsMaxWidth, ...supportsPadding];
 
 /**
  * Setting options.

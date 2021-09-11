@@ -1,6 +1,6 @@
 import { addFilter } from "@wordpress/hooks";
 import { createHigherOrderComponent } from "@wordpress/compose";
-import { extended } from "./options";
+import { supportedBlocks } from "./options";
 import { getClasses } from "./helpers";
 
 /**
@@ -11,9 +11,9 @@ addFilter("editor.BlockListBlock", "lambry/core-style",
 		return (props) => {
 			const { attributes, name } = props;
 
-			if (!extended.includes(name)) return <BlockListBlock {...props} />;
+			if (!supportedBlocks.includes(name)) return <BlockListBlock {...props} />;
 
-			const classes = getClasses(attributes);
+			const classes = getClasses(attributes, name);
 
 			return <BlockListBlock {...props} className={classes} />;
 		};

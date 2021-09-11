@@ -3,9 +3,9 @@
 A little plugin that extends core WordPress blocks with the following options.
 
 ## Options
-- Shift: Choose to shift the current block up, right, down or left.
-- Padding: Choose from preset padding options for visual consistency.
-- Max Width: For when you want to limit a block to a preset width.
+- Shift: `group`, `columns`, `media-text`, `image` and `video`. Choose to shift the current block up, right, down or left.
+- Max Width: `group`, `heading`, `paragraph`, `quote` and `list`. For when you want to limit a block to a preset width.
+- Padding: `group`, `cover` and `buttons`. Choose from preset padding options for visual consistency.
 
 ## Usage
 To override the shift, padding and max-width values just set your own values for the corresponding CSS variables.
@@ -23,6 +23,14 @@ body {
     --cs-padding-md: 2.5rem;
     --cs-padding-lg: 5rem;
 }
+```
+
+You can also filter which blocks have which options by using the following filters: `coreStyle.supportsShift`, `coreStyle.supportsMaxWidth` and `coreStyle.supportsPadding`. Below is an example of adding the shift controls to heading blocks.
+
+```js
+wp.hooks.addFilter("coreStyle.supportsShift", "extend/shift", (blocks) => ([
+	...blocks, "core/heading"
+]));
 ```
 
 ### Admin

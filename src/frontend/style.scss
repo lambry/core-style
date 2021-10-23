@@ -1,0 +1,78 @@
+/**
+ * The following styles get applied to the frontend only.
+ */
+
+:root {
+	--x-animation-duration: 1s;
+	--x-animation-distance: 1rem;
+	--x-animation-easing: cubic-bezier(0.46, 0.03, 0.52, 0.96);
+}
+
+$sizes: (sm: 0, md: 35rem, lg: 60rem);
+$sizeKeys: map-keys($sizes);
+$animations: (fade-in, fade-up, fade-down, fade-left, fade-right);
+
+@each $size, $width in $sizes {
+    $index: index($sizeKeys, $size);
+
+	// Visibility styles
+	$max: if($index < 3, map-get($sizes, nth($sizeKeys, index($sizeKeys, $size) + 1)), 0);
+
+	@if $width == 0 {
+		@media (max-width: $max) {
+			.x-hide-#{$size} {
+				display: none;
+			}
+		}
+	} @else if $max == 0 {
+		@media (min-width: $width) {
+			.x-hide-#{$size} {
+				display: none;
+			}
+		}
+	} @else {
+		@media (min-width: $width) and (max-width: $max) {
+			.x-hide-#{$size} {
+				display: none;
+			}
+		}
+	}
+}
+
+// Animation styles
+@each $animation in $animations {
+	.x-animate-#{$animation} {
+		animation: var(--x-animation-duration)  var(--x-animation-easing) 0s 1 forwards x-animate-#{$animation};
+		animation-play-state: paused;
+	}
+
+	@keyframes x-animate-#{$animation} {
+		from {
+			opacity: 0;
+
+			@if $animation == fade-up {
+				transform: translate(0, var(--x-animation-distance));
+			}
+			@if $animation == fade-down {
+				transform: translate(0, calc(-1 * var(--x-animation-distance)));
+			}
+			@if $animation == fade-left {
+				transform: translate(var(--x-animation-distance), 0);
+			}
+			@if $animation == fade-right {
+				transform: translate(calc(-1 * var(--x-animation-distance)), 0);
+			}
+		}
+		to {
+			opacity: 1;
+
+			@if animation != fade-in {
+				transform: translate(0, 0);
+			}
+		}
+	}
+}
+
+.x-animate-in {
+	animation-play-state: running;
+}

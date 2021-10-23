@@ -1,27 +1,27 @@
 /**
- * The following styles get applied both on the front end and in the editor.
+ * The following styles get applied both on the frontend and in the editor.
  */
 
 :root {
-	--cs-shift-up: -5rem;
-	--cs-shift-right: -2.5rem;
-	--cs-shift-down: -5rem;
-	--cs-shift-left: -2.5rem;
-	--cs-max-width-sm: 30rem;
-	--cs-max-width-md: 40rem;
-	--cs-max-width-lg: 50rem;
-	--cs-padding-sm: 1rem;
-	--cs-padding-md: 2.5rem;
-	--cs-padding-lg: 5rem;
+	--x-shift-up: -5rem;
+	--x-shift-right: -2.5rem;
+	--x-shift-down: -5rem;
+	--x-shift-left: -2.5rem;
+	--x-padding-sm: 1rem;
+	--x-padding-md: 2.5rem;
+	--x-padding-lg: 5rem;
+	--x-max-width-sm: 30rem;
+	--x-max-width-md: 40rem;
+	--x-max-width-lg: 50rem;
 }
 
-$sizes: "sm", "md", "lg";
-$shift: ("up": "top", "right": "right", "down": "bottom", "left": "left");
+$sizes: (sm, md, lg);
+$shift: (up: top, right: right, down: bottom, left: left);
 
 // Shift block styles
 @each $option, $position in $shift {
-	.shift-#{$option} {
-		margin-#{$position}: var(--cs-shift-#{$option});
+	.x-shift-#{$option} {
+		margin-#{$position}: var(--x-shift-#{$option});
 		position: relative;
 		z-index: 2;
 	}
@@ -29,24 +29,24 @@ $shift: ("up": "top", "right": "right", "down": "bottom", "left": "left");
 
 @each $size in $sizes {
 	// Padding styles
-	.padding-top-#{$size} {
-		padding-top: var(--cs-padding-#{$size});
+	.x-padding-top-#{$size} {
+		padding-top: var(--x-padding-#{$size});
 	}
 
-	.padding-right-#{$size} {
-		padding-right: var(--cs-padding-#{$size});
+	.x-padding-right-#{$size} {
+		padding-right: var(--x-padding-#{$size});
 	}
 
-	.padding-bottom-#{$size} {
-		padding-bottom: var(--cs-padding-#{$size});
+	.x-padding-bottom-#{$size} {
+		padding-bottom: var(--x-padding-#{$size});
 	}
 
-	.padding-left-#{$size} {
-		padding-left: var(--cs-padding-#{$size});
+	.x-padding-left-#{$size} {
+		padding-left: var(--x-padding-#{$size});
 	}
 
 	// Max width styles
-	.max-width-#{$size} {
-		max-width: var(--cs-max-width-#{$size});
+	.x-max-width-#{$size} {
+		max-width: var(--x-max-width-#{$size});
 	}
 }

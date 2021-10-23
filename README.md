@@ -1,37 +1,33 @@
-# Core Style
+# Xtnd
 
-A little plugin that extends core WordPress blocks with the following options.
+A little plugin that extends WordPress blocks with a few extra display options.
 
 ## Options
-- Shift: `group`, `columns`, `media-text`, `image` and `video`. Choose to shift the current block up, right, down or left.
-- Max Width: `group`, `heading`, `paragraph`, `quote` and `list`. For when you want to limit a block to a preset width.
-- Padding: `group`, `cover` and `buttons`. Choose from preset padding options for visual consistency.
+- Shift: Choose to shift the block up, right, down or left.
+- Padding: Add padding to any and all sides of a block.
+- Max width: Limit the block to maximum width.
+- Animate in: Fade in a block when it's scrolled into view.
+- Visibility: Hide blocks for certain screen sizes.
 
 ## Usage
-To override the shift, padding and max-width values just set your own values for the corresponding CSS variables.
+You can override the shift, padding and max-width values as well as tweak the animations using the following CSS custom properties.
 
 ```css
 body {
-    --cs-shift-up: -5rem;
-    --cs-shift-right: -2.5rem;
-    --cs-shift-down: -5rem;
-    --cs-shift-left: -2.5rem;
-    --cs-max-width-sm: 30rem;
-    --cs-max-width-md: 40rem;
-    --cs-max-width-lg: 50rem;
-    --cs-padding-sm: 1rem;
-    --cs-padding-md: 2.5rem;
-    --cs-padding-lg: 5rem;
+	--x-shift-up: -5rem;
+	--x-shift-right: -2.5rem;
+	--x-shift-down: -5rem;
+	--x-shift-left: -2.5rem;
+	--x-padding-sm: 1rem;
+	--x-padding-md: 2.5rem;
+	--x-padding-lg: 5rem;
+	--x-max-width-sm: 30rem;
+	--x-max-width-md: 40rem;
+	--x-max-width-lg: 50rem;
+	--x-animation-duration: 1s;
+	--x-animation-distance: 1rem;
+	--x-animation-easing: cubic-bezier(0.46, 0.03, 0.52, 0.96);
 }
 ```
-
-You can also filter which blocks have which options by using the following filters: `coreStyle.supportsShift`, `coreStyle.supportsMaxWidth` and `coreStyle.supportsPadding`. Below is an example of adding the shift controls to heading blocks.
-
-```js
-wp.hooks.addFilter("coreStyle.supportsShift", "extend/shift", (blocks) => ([
-	...blocks, "core/heading"
-]));
-```
-
 ### Admin
 ![screenshot](screenshot.jpg)

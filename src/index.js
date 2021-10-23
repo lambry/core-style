@@ -1,13 +1,12 @@
 /**
- * Files containing `style` keyword are bundled together
- * and applied both to the front end and editor.
+ * Import styles.
  */
 import "./style.scss";
 
 /**
- * Import edit and prop filters.
+ * Import editor files.
  */
-import "./settings";
-import "./edit";
-import "./wrapper";
-import "./props";
+import "./editor/attrs";
+import "./editor/edit";
+import "./editor/wrapper";
+import "./editor/props";
